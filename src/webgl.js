@@ -20,7 +20,7 @@ function init () {
     canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    var config = { alpha: false };
+    var config = { alpha: true };
     gl = canvas.getContext("webgl", config) || canvas.getContext("experimental-webgl", config);
     if (!gl) {
         alert('WebGL is unavailable.');
@@ -85,7 +85,7 @@ function loadSkeleton (name, initialAnimation, premultipliedAlpha, skin) {
     var animationStateData = new spine.AnimationStateData(skeleton.data);
     var animationState = new spine.AnimationState(animationStateData);
     if (name === "spineboy") {
-        animationStateData.setMix("walk", "jump", 0.4)
+        animationStateData.setMix("walk", "jump", 0.4);
         animationStateData.setMix("jump", "run", 0.4);
         animationState.setAnimation(0, "walk", true);
         animationState.addAnimation(0, "run", true, 0);
@@ -135,7 +135,7 @@ function render () {
     // Update the MVP matrix to adjust for canvas size changes
     resize();
 
-    gl.clearColor(0.3, 0.3, 0.3, 1);
+    gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // Apply the animation state based on the delta time.
