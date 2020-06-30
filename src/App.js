@@ -2,6 +2,7 @@ import React from 'react';
 import '@ionic/react/css/core.css';
 import './App.css';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
+
 /* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';

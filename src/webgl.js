@@ -13,10 +13,12 @@ var skeletons = {
 };
 var activeSkeleton = "spineboy";
 var atlasLoader;
+let stopAnimation;
 
 function init () {
     // Setup canvas and WebGL context. We pass alpha: false to canvas.getContext() so we don't use premultiplied alpha when
     // loading textures. That is handled separately by PolygonBatcher.
+	stopAnimation = false;
     canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -158,7 +160,11 @@ function render () {
     batcher.end();
     shader.unbind();
 
-    requestAnimationFrame(render);
+	if (!stopAnimation) {
+		requestAnimationFrame(render);
+	} else {
+		gl.clear(gl.COLOR_BUFFER_BIT);
+	}
 }
 
 function resize () {
@@ -184,4 +190,8 @@ function resize () {
     gl.viewport(0, 0, canvas.width, canvas.height);
 }
 
-export { init };
+function stopAnimationRender () {
+	stopAnimation = true;
+}
+
+export { init, stopAnimationRender };

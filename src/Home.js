@@ -1,32 +1,27 @@
-import { IonPage, IonButton } from '@ionic/react';
-import React, { useEffect } from 'react';
-import { init } from './webgl';
+import { IonButton } from '@ionic/react';
+import React, {useEffect} from 'react';
+import { init, stopAnimationRender } from './webgl';
+import { ScreenOrientation } from "@ionic-native/screen-orientation";
 
 function Home() {
-    useEffect(() => {
-        init();
-    }, []);
+    useEffect(async () => {
+        await ScreenOrientation.lock(ScreenOrientation.ORIENTATIONS.LANDSCAPE);
+    });
+    const clearCanvas = () => {
+        stopAnimationRender();
+    };
 
-        return (
-            <IonPage>
-                <div className="App">
-                    <header className="App-header">
-                        <p>
-                            Edit <code>src/App.js</code> and save to reload.
-                        </p>
-                        <button>Start</button>
-                        <a
-                            className="App-link"
-                            href="https://reactjs.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Learn React
-                        </a>
-                        <canvas id="canvas" style={{width: 200, height: 200}}/>
-                    </header>
-                </div>
-            </IonPage>
+    return (
+            <div className="App">
+                <header className="App-header">
+                    <p style={{color: "black"}}>Test Ionic React App for Amira</p>
+                    <div style={{flexDirection: 'column'}}>
+                        <IonButton onClick={init}>Start</IonButton>
+                        <IonButton onClick={clearCanvas}>Stop</IonButton>
+                    </div>
+                    <canvas id="canvas" style={{width: 200, height: 200}}/>
+                </header>
+            </div>
         );
 }
 
