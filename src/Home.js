@@ -25,7 +25,7 @@ function Home() {
                     count++;
                 }
             }
-            console.log(status)
+            console.log(status);
         });
 
         stopAnimationRender();
