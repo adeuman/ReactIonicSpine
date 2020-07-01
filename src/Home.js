@@ -3,26 +3,26 @@ import React, {useEffect} from 'react';
 import { init, stopAnimationRender } from './webgl';
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture/ngx';
+import { Media, MediaObject } from '@ionic-native/media/ngx';
 
 function Home() {
+    let myAudio;
 
     useEffect(async () => {
         await ScreenOrientation.lock(ScreenOrientation.ORIENTATIONS.LANDSCAPE);
     });
     const clearCanvas = () => {
+        myAudio.stopRecord();
+
+        console.log(myAudio);
+
         stopAnimationRender();
     };
 
     const captureAudio = () => {
-        let mediaCapture = new MediaCapture();
+        myAudio = this.media.create('documents://myAudio.m4a');
 
-        mediaCapture.captureAudio(1)
-          .then(
-            (data) => {console.log(data); console.log("whyyyyyyyyyyy")}
-          ).catch(
-            (err) => console.log("I'm not sure which error I should look at!"+err)
-          );
+        myAudio.startRecord();
     };
 
     return (
