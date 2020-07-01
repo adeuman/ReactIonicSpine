@@ -1,9 +1,9 @@
 import { IonButton } from '@ionic/react';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { init, stopAnimationRender } from './webgl';
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
-
-import { Media, MediaObject } from '@ionic-native/media/ngx';
+import { File } from '@ionic-native/file';
+import { Media } from '@ionic-native/media/ngx';
 import { isPlatform } from '@ionic/react';
 
 function Home() {
@@ -15,7 +15,6 @@ function Home() {
     const clearCanvas = () => {
         myAudio.stopRecord();
         myAudio.play();
-        console.log(myAudio);
 
         stopAnimationRender();
     };
@@ -24,11 +23,10 @@ function Home() {
         let media = new Media();
 
         if(isPlatform('ios')) {
-            myAudio = media.create('documents://myAudio.m4a');
+            myAudio = media.create(File.tempDirectory + 'myAudio.m4a');
         } else if(isPlatform('android')) {
-            myAudio = media.create('/myAudio.mp3');    
+            myAudio = media.create(File.applicationStorageDirectory + 'myAudio.aac');
         }
-        
 
         myAudio.startRecord();
     };
