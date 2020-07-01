@@ -12,9 +12,21 @@ function Home() {
     useEffect(async () => {
         await ScreenOrientation.lock(ScreenOrientation.ORIENTATIONS.LANDSCAPE);
     });
-    const clearCanvas = () => {
+    const clearCanvas = async () => {
+        let count = 0;
         myAudio.stopRecord();
         myAudio.play();
+        myAudio.onStatusUpdate.subscribe(status => {
+            if (status === 4) {
+                if (count === 1) {
+                    myAudio.stop();
+                    myAudio.release();
+                } else {
+                    count++;
+                }
+            }
+            console.log(status)
+        });
 
         stopAnimationRender();
     };
