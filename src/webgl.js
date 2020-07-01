@@ -39,13 +39,13 @@ function init () {
     // Tell AssetManager to load the resources for each model, including the exported .skel file, the .atlas file and the .png
     // file for the atlas. We then wait until all resources are loaded in the load() method.
     assetManager.loadBinary("/spineboy-pro.skel", () => {
-        console.log("loaded skel")
+        
     }, (error) => {
 		console.error('THIS IS ERROR: ' + error);
 		console.error('WOAH WHY IS THIS HAPPENING!!!');
 	});
     assetManager.loadTextureAtlas("/spineboy-pma.atlas", () => {
-    	console.log("loaded atlas")
+    	
     }, (error) => {
     	console.error('THIS IS ERROR: ' + error);
 		console.error('WOAH WHY IS THIS HAPPENING!!!');
@@ -69,7 +69,7 @@ function loadSkeleton (name, initialAnimation, premultipliedAlpha, skin) {
 
     // Load the texture atlas using name.atlas from the AssetManager.
     var atlas = assetManager.get("/spineboy-pma.atlas");
-    console.log({atlas})
+    
 
     // Create a AtlasAttachmentLoader that resolves region, mesh, boundingbox and path attachments
     atlasLoader = new spine.AtlasAttachmentLoader(atlas);
@@ -96,22 +96,21 @@ function loadSkeleton (name, initialAnimation, premultipliedAlpha, skin) {
     }
     animationState.addListener({
         start: function(track) {
-            console.log("Animation on track " + track.trackIndex + " started");
+            
         },
         interrupt: function(track) {
-            console.log("Animation on track " + track.trackIndex + " interrupted");
+            
         },
         end: function(track) {
-            console.log("Animation on track " + track.trackIndex + " ended");
+            
         },
         disposed: function(track) {
-            console.log("Animation on track " + track.trackIndex + " disposed");
+            
         },
         complete: function(track) {
-            console.log("Animation on track " + track.trackIndex + " completed");
+            
         },
         event: function(track, event) {
-            console.log("Event on track " + track.trackIndex + ": " + JSON.stringify(event));
         }
     })
 

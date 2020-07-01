@@ -4,6 +4,7 @@ import { init, stopAnimationRender } from './webgl';
 import { ScreenOrientation } from "@ionic-native/screen-orientation";
 
 import { Media, MediaObject } from '@ionic-native/media/ngx';
+import { isPlatform } from '@ionic/react';
 
 function Home() {
     let myAudio;
@@ -13,14 +14,21 @@ function Home() {
     });
     const clearCanvas = () => {
         myAudio.stopRecord();
-
+        myAudio.play();
         console.log(myAudio);
 
         stopAnimationRender();
     };
 
     const captureAudio = () => {
-        myAudio = this.media.create('documents://myAudio.m4a');
+        let media = new Media();
+
+        if(isPlatform('ios')) {
+            myAudio = media.create('documents://myAudio.m4a');
+        } else if(isPlatform('android')) {
+            myAudio = media.create('/myAudio.mp3');    
+        }
+        
 
         myAudio.startRecord();
     };
