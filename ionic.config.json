@@ -1,0 +1,7 @@
+{
+  "name": "ReactIonicSpine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
