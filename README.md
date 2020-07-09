@@ -1,3 +1,5 @@
+## Instructions to Install and Build
+
 * If you do not have an IDE downloaded, Install Visual Studio Code
 * Download the git repository: https://github.com/adeuman/ReactIonicSpine.git
 
