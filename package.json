@@ -17,6 +17,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "android": "^0.0.8",
+    "cordova-plugin-audioinput": "^1.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-media": "^5.0.3",
     "cordova-plugin-screen-orientation": "^3.0.2",
