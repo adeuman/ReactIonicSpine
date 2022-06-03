@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@angular/core": "^10.0.1",
+    "@angular/core": "^11.0.5",
     "@capacitor/android": "^2.2.0",
     "@capacitor/core": "2.2.0",
     "@ionic-native/core": "^5.27.0",
